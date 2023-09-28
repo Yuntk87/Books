@@ -1,0 +1,65 @@
+@charset "UTF-8";
+html, body {
+	height: 100%
+}
+ul {
+	margin: 0;
+	list-style: none;
+}
+li {
+	display: inline-block;
+	margin-right: 20px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+table {
+	border-collapse: collapse;
+	width: 80%;
+	margin: 0 auto;
+}
+th {
+	text-align: center;
+	border: 1px solid black;
+	padding: 5px;
+}
+td {
+	border: 1px solid black;
+	text-align: center;
+	padding: 5px;
+}
+a:hover {
+	color: red;
+}
+nav {
+	margin: 50px auto;
+}
+#searchBookFrm {
+	margin-bottom: 10px;
+}
+.btnbox {
+	text-align: center;
+	padding: 10px;
+}
+
+input {
+	width: 90%;
+}
+h2 {
+	text-align: center;
+}
+
+.wrapper{
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 30px;
+  width: 80%;
+  margin: 0 auto;
+}
+footer{
+  height: 30px;
+  position : relative;
+  transform : translateY(-100%);
+  text-align: center;
+}
