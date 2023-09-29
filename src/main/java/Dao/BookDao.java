@@ -49,8 +49,24 @@ public class BookDao extends JDBConnect{
 			return res;
 		}
 	 
+	 public int lendBook(BookDto dto) {
+		 String sql = "UPDATE book SET location=?, chk_num=1 WHERE book_num=?";
+		 int res = 0;
+		 try {
+			 psmt = con.prepareStatement(sql);
+			 psmt.setString(1, dto.getLocation());
+			 psmt.setInt(2, dto.getBook_num());
+			 res = psmt.executeUpdate();
+		 }
+		 catch(SQLException e) {
+			 System.out.println("대출처리 중 예외 발생");
+			 e.printStackTrace();
+		 }
+		 return res;
+	 }
+	 
 	 public int returnBook(int num) {
-		 String sql = "UPDATE book SET location='' WHERE book_num=?";
+		 String sql = "UPDATE book SET location='', chk_num=0 WHERE book_num=?";
 		 int res = 0;
 		 try {
 			 psmt = con.prepareStatement(sql);
@@ -91,7 +107,8 @@ public class BookDao extends JDBConnect{
 				dto.setBook_num(rs.getInt(1));
 				dto.setBook_name(rs.getString(2));
 				dto.setLocation(rs.getString(3));
-				dto.setPostDate(rs.getDate(4));
+				dto.setChk_num(rs.getInt(4));
+				dto.setPostDate(rs.getDate(5));
 				bList.add(dto);
 			}
 		}

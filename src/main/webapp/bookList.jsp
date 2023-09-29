@@ -35,7 +35,8 @@
 								<td>${b.location }</td>
 								<td>${b.postDate }</td>
 								<td>
-									<input type="button" value="반납" onClick="returnChk(${b.book_num })">
+									<input type="button" value="대출" onClick="location.href='./lendBook?bookNum=${b.book_num }'" ${b.chk_num eq 1? 'disabled' : '' }>
+									<input type="button" value="반납" onClick="location.href='./return?bookNum=${b.book_num }'+'&location=${b.location }'" ${b.chk_num eq 0? 'disabled' : '' }>
 								</td>
 							</tr>
 						</c:forEach>
@@ -44,15 +45,6 @@
 			</tr>
 		</table>
 	</div>
-
 <%@ include file="./footer.jsp" %>
 </body>
-<script>
-	function returnChk(num) {
-		if(confirm(num + "번 도서를 반납하시겠습니까?")) {
-			window.location.href="./return?bookNum="+num;
-			alert("반납성공");
-		}
-	}
-</script>
 </html>

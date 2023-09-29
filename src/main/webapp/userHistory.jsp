@@ -5,33 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>UserList</title>
+<title>UserHistory</title>
 </head>
 <body>
 <%@ include file="./navi.jsp" %>
-	<div id="userListBox" class="wrapper">
-		<h2>회원목록</h2>
+	<div id="userHistoryBox" class="wrapper">
+		<h2>회원이력조회</h2>
 		<table>
-			<tr>
+			<tr>	
+				<th>번호</th>
 				<th>회원번호</th>
 				<th>회원이름</th>
-				<th>비밀번호</th>
+				<th>도서번호</th>
+				<th>내용</th>
 				<th>등록일자</th>
 			</tr>	
 			<tr>
 				<c:choose>
-					<c:when test="${empty uList }" >
-						<tr><td colspan="4">등록된 회원이 없습니다</td></tr>
+					<c:when test="${empty hList }" >
+						<tr><td colspan="6">회원이력이 없습니다</td></tr>
 					</c:when>
 					<c:otherwise>
-						<c:forEach items="${uList }" var="u">
+						<c:forEach items="${hList }" var="h">
 							<tr>
-								<td>${u.user_num }</td>
-								<td>
-									<a href="./userHistory?userNum=${u.user_num }">${u.name }</a>
-								</td>
-								<td>${u.password }</td>
-								<td>${u.postDate }</td>
+								<td>${h.his_num }</td>
+								<td>${h.user_num }</td>
+								<td>${h.name }</td>
+								<td>${h.book_num }</td>
+								<td>${h.return_num == 0? '반납' : '대출'}</td>
+								<td>${h.postDate }</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>
